@@ -1,0 +1,164 @@
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .menu {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    display: flex;
+}
+
+.container .menu nav {
+    float: right;
+    right: 0%;
+    position: absolute;
+}
+
+.container .menu ul {
+    list-style: none;
+    float: right;
+}
+
+.container .menu ul li {
+    margin: 5px;
+    display: inline;
+}
+
+.container .menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.container .menu a:hover {
+    background: rgb(1, 1, 1, 0.5);
+    color: orange;
+}
+
+.container video {
+    z-index: -1;
+    position: absolute;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container .content {
+    color: white;
+    font-size: 1.7em;
+}
+
+
+.container .content .button {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+}
+
+
+.content .button a {
+    margin: 0% auto;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    background: rgb(1, 1, 1, 0.5);
+    padding: 10px 25px;
+    border-radius: 10px;
+    transition: 0.25s ease-in;
+}
+
+.content a:hover {
+    background: rgb(255, 165, 0, 0.6);
+    color: rgb(0, 0, 0, 0.8);
+}
+
+
+@media (min-width: 768px) {
+
+    .container .menu ul li {
+        margin: 10px;
+    }
+    
+    .container .menu a {
+        font-size: 20px;
+    }
+
+    .container .content {
+        font-size: 2.5em;
+    }
+
+    .container .content .button {
+        top: 56%;
+    }
+
+    .content .button a {
+        font-size: 0.5em;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    .container .menu ul li {
+        margin: 10px;
+    }
+    
+    .container .menu a {
+        font-size: 25px;
+    }
+
+    .container .content {
+        font-size: 3.0em;
+    }
+
+    .container .content .button {
+        top: 56%;
+    }
+
+    .content .button a {
+        font-size: 0.5em;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .container .content {
+        font-size: 4.5em;
+    }
+
+    .container .content .button {
+        top: 56%;
+    }
+
+    .content .button a {
+        font-size: 0.3em;
+    }
+
+   
+}
+
