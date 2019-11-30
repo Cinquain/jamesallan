@@ -13,8 +13,7 @@ const Port = process.env.Port || 8000
 
 
 app.get('/', (req, res) => {
-    console.log('Rendering something at ROOOOOOOT')
-    res.send("Oh let's do it!")
+   res.render('index.html')
 })
 
 app.get('/users', (req, res) => {
