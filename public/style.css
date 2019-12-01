@@ -50,8 +50,9 @@
 }
 
 .container .menu a:hover {
-    background: rgb(1, 1, 1, 0.5);
-    color: orange;
+    background: lightskyblue;
+    color: white;
+    transition: 0.5ms ease-out;
 }
 
 .container video {
@@ -92,8 +93,8 @@
 }
 
 .content a:hover {
-    background: rgb(255, 165, 0, 0.6);
-    color: rgb(0, 0, 0, 0.8);
+    background:  lightskyblue;
+    color: white;
 }
 
 

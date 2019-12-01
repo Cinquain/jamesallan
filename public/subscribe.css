@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+
+*, *::before, *::after {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background:white;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 0%;
+    right: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu a img {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.menu a img:hover {
+    background: lightskyblue;
+    border-radius: 50%;
+}
+
+.menu nav ul li {
+    display: inline;
+    margin: 10px;
+}
+
+.menu nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+
+.content {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .options {
+    width: 80%;
+    height: 80px;
+    margin: 20px auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.content .options .button {
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 0.8em;
+    width: auto;
+}
+
+.content .options .button a {
+    padding: 7px 15px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+}
+
+
+
+
+
+@media (min-width: 768px) {
+    .menu a img {
+        width: 80px;
+    }
+
+    .menu nav ul li {
+        margin: 25px;
+        font-size: 20px;
+    }
+
+    .menu nav li a {
+        padding: 10px 20px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+
+    .menu nav li a:hover {
+        background: lightskyblue;
+        color: white;
+        border: none;
+        transition: 0.25ms ease-out;
+    }
+
+    .content .options {
+        height: 120px;
+        font-size: 1.5em;
+    }
+
+    .content .options .button {
+        font-size: 0.7em;
+        padding: 10px;
+    }
+
+
+
+}
+
+@media (min-width: 1024px) {
+   .menu a img {
+       margin-left: 20px;
+   }
+
+   .menu nav ul li {
+       font-size: 25px;
+   }
+
+   .content .options {
+       height: 150px;
+       font-size: 2em;
+   }
+ 
+
+}
+
+@media (min-width: 1200px) {
+    .content .options {
+        font-size: 2em;
+    }
+
+    .content .options .button {
+        font-size: 0.7em;
+    }
+
+    .content .options .button a {
+        padding: 10px 20px;
+    }
+
+    #green:hover {
+        background: limegreen;
+    }
+
+    #gold:hover {
+        background: gold;
+    }
+
+    #blue:hover {
+        background: lightskyblue;
+    }
+
+    #black:hover {
+        background: black;
+        color: white;
+    }
+
+
+}
