@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300&display=swap');
+
+
+*,*::before, *::after {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    font-family: 'Lato', sans-serif;
+    color: black;
+    margin: 24px;
+}
+
+.wall {
+    width: 100%;
+    margin-top: 20%;
+}
+
+.menu {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 0%;
+    right: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu a img {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.menu a img:hover {
+    background: lightskyblue;
+    border-radius: 50%;
+}
+
+.menu nav ul li {
+    display: inline;
+    margin: 10px;
+}
+
+.menu nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+p {
+    text-align: center;
+    color: gray;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.wall-item {
+    display: block;
+    margin: 0 0 24px 0;
+    padding: 12px;
+    background: white;
+    transition: all 200ms;
+    cursor: pointer;
+}
+
+.wall-item:hover {
+    transform: translateY(-8px);
+    transition: all 200ms;
+}
+
+.wall-item > img {
+    display: block;
+    width: 100%;
+    margin: 0 0 30px 0;
+}
+
+.wall-item h2 {
+    text-align: center;
+    color: black;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+
+.wall-column {
+    display: block;
+    position: relative;
+    width: 33.3333%;
+    float: left;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+
+@media (max-width: 640px) {
+
+    .wall-column {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .wall-column {
+        width: auto;
+        float: none;
+    }
+}
+
+
+@media (min-width: 768px) {
+
+    .menu a img {
+        width: 80px;
+    }
+
+    .menu nav ul li {
+        margin: 25px;
+        font-size: 20px;
+    }
+
+    .menu nav li a {
+        padding: 10px 20px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+
+    .menu nav li a:hover {
+        background: lightskyblue;
+        color: white;
+        border: none;
+        transition: 0.25ms ease-out;
+    }
+
+    .wall-item h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .menu a img {
+        margin-left: 20px;
+    }
+
+    .menu nav {
+        margin-right: 2em;
+    }
+ 
+    .menu nav ul li {
+        font-size: 25px;
+    }
+
+    .wall {
+        margin-top: 15%;
+    }
+
+    .wall-item h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (min-width: 1400px) {
+    .wall {
+        margin-top: 10%;
+    }
+
+    .wall-item h2 {
+        font-size: 2em;
+    }
+}

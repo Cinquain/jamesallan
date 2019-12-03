@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153619596-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'UA-153619596-1');
+        </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Thoughts</title>
+    <link rel="stylesheet" href="blog.css">
+    <link rel="shortcut icon" href="/assets/Yin Yang.png" type="image/x-icon">
+
+     <!-- Facebook Pixel Code -->
+     <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '320892225398142');
+            fbq('track', 'PageView');
+          </script>
+          <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=320892225398142&ev=PageView&noscript=1"
+          /></noscript>
+          <!-- End Facebook Pixel Code -->
+</head>
+<body>
+    
+
+        <div class="menu">
+            <a href="index.html">
+                <img src="/assets/Yin Yang.png" alt="">
+            </a>
+    
+            <nav>
+                <ul>
+                    <li>
+                        <a href="">
+                            About Me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Book
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>  
+
+        <div class="wall">
+
+            <div class="wall-item">
+                <img src="/assets/blog assets/swift_generics.jpg" alt="">
+                <h2>Understanding Generics</h2>
+                <p>January 5th, 2019</p>
+            </div>
+
+            <div class="wall-item">
+                <img src="/assets/blog assets/steps_to_progress.jpg" alt="">
+                <h2>Steps in Human Progress</h2>
+                <p>October 9th, 1987</p>
+            </div>
+
+            <div class="wall-item">
+                <img src="/assets/blog assets/models.jpg" alt="">
+                <h2>Stop Looking at Models</h2>
+                <p>November 3rd, 2017</p>
+            </div>
+
+            <div class="wall-item">
+                <img src="/assets/blog assets/singleton.jpg" alt="">
+                <h2>The Singleton Design Patter</h2>
+                <p>January 5th, 2020</p>
+            </div>
+
+            <div class="wall-item">
+                <img src="/assets/blog assets/madison_avenue.jpg" alt="">
+                <h2>Goodbye Madison Avenue</h2>
+                <p>May 19th, 2019</p>
+            </div>
+
+            <div class="wall-item">
+                <img src="/assets/blog assets/become_something.jpg" alt="">
+                <h2>Make something of yourself</h2>
+                <p>June 3rd, 2019</p>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+      
+        <script src="jaliswall.js"></script>
+        <script type="text/javascript">
+            $('.wall').jaliswall();
+
+            $('.wall').jaliswall({
+                item : '.wall-item',
+                columnClass : '.wall-column'
+            });
+        </script>
+
+        
+</body>
+</html>
