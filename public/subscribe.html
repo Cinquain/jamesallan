@@ -74,43 +74,70 @@
         <div class="options">
             Thoughts on Health 
             <div class="button">
-               <a href="" id="green">
-                   Health
-               </a>
+                <button id="green" onclick="openModal('/health');" >
+                    Health
+                </button>
             </div>
         </div>
 
         <div class="options">
             Thoughts on Wealth
             <div class="button">
-                <a href="" id="gold">
+                <button id="gold" onclick="openModal('/wealth')">
                     Wealth
-                </a>
+                </button>
             </div>
         </div>
 
         <div class="options">
             Thoughts on Success
             <div class="button">
-                <a href="" id="blue">
-                    Success
-                </a>
+               <button id="blue" onclick="openModal('/success')">
+                   Success
+               </button>
             </div>
         </div>
 
         <div class="options">
             All of James Allan 
             <div class="button">
-                <a href="" id="black">
+                <button id="black" onclick="openModal('/all')">
                     Wealth, Health, Success
-                </a>
+                </button>
             </div>
         </div>
 
     </div>
 
-    <div class="social">
+    <div class="modal">
+        <div class="modal-content">
+            <div class="close">
+                +
+            </div>
+            Subscribe to James Allan 
 
+            <form id="form" action="" method="POST">
+                <input type="text" name="fullname" placeholder="Name">
+                <input type="text" name="email" placeholder="Email">
+                <input type="text" name="city" placeholder="Ciy">
+                <button>Subscribe</button>
+            </form>
+        </div>
     </div>
+
+    <script type="text/javascript">
+    
+    function openModal(endpoint) {
+    document.querySelector('.modal').style.display = 'flex';
+    document.getElementById('form').action = endpoint
+    console.log(endpoint)
+    }
+
+    document.querySelector('.close').addEventListener('click', function() {
+    document.querySelector('.modal').style.display = 'none'
+    })
+
+    </script>
+
 </body>
 </html>

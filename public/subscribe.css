@@ -73,16 +73,73 @@ body {
     margin-top: 20px;
     font-size: 0.8em;
     width: auto;
+    cursor: pointer;
 }
 
-.content .options .button a {
+.content .options .button button {
     padding: 7px 15px;
     text-decoration: none;
     color: black;
     border: 1px solid black;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
+.modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    transition: 200ms;
+}
 
+.modal-content {
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 20px;
+    position: relative;
+}
+
+.modal-content form {
+    margin-top: 30px;
+}
+
+.modal-content input {
+    width: 60%;
+    height: 35px;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid black;
+    border-radius: 4px;
+    text-indent: 20px;
+    color: black;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.6em;
+}
+
+.close {
+    position: absolute;
+    top: 0%;
+    right: 15px;
+    transform: rotate(45deg);
+}
 
 
 
@@ -119,6 +176,12 @@ body {
         padding: 10px;
     }
 
+    .content .options .button button {
+        font-size: 0.8em;
+        padding: 10px 20px;
+    
+    }
+
 
 
 }
@@ -136,6 +199,16 @@ body {
        height: 150px;
        font-size: 2em;
    }
+
+   .modal-content {
+       width: 800px;
+       height: 400px;
+       font-size: 2em;
+   }
+
+   .modal-content form {
+    margin-top: 50px;
+}
  
 
 }
