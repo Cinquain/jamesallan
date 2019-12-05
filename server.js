@@ -12,6 +12,13 @@ app.use(express.static('./public'))
 
 const Port = process.env.Port || 8000
 
+const pool = myql.createConnection( {
+    host: 'us-cdbr-iron-east-05.cleardb.net',
+    user: 'b9bc95ae944364',
+    password: '63d9d15b',
+    database: 'heroku_9ac93b6b6935406'
+})
+
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
@@ -36,8 +43,21 @@ app.post('/health', (req, res, err) => {
     var city = req.body.city
     var list = process.env.HEALTH_LIST
 
+    const queryString = "INSERT INTO health (name, email, city) VALUES (?, ?, ?)"
     console.log(name, email, city, list)
     saveToMailchimp(name, email, city, list)
+
+    pool.query(queryString, [name, email, city], (error, results, fields) => {
+        if (error) {
+            console.log('Failed to insert new user into mysql database' + error)
+            res.sendStatus(500)
+            return
+        }
+        console.log('Successfully inserted new user')
+        res.redirect('index.html')
+        res.end()
+    })
+
 })
 
 app.post('/wealth', (req, res, err) => {
@@ -46,8 +66,22 @@ app.post('/wealth', (req, res, err) => {
     var city = req.body.city
     var list = process.env.WEALTH_LIST
 
+    const queryString = "INSERT INTO wealth (name, email, city) VALUES (?, ?, ?)"
+
     console.log(name, email, city, list)
     saveToMailchimp(name, email, city, list)
+
+    pool.query(queryString, [name, email, city], (error, results, fields) => {
+        if (error) {
+            console.log('Failed to insert new user into mysql database' + error)
+            res.sendStatus(500)
+            return
+        }
+        console.log('Successfully inserted new user')
+        res.redirect('index.html')
+        res.end()
+    })
+
 })
 
 app.post('/success', (req, res, err) => {
@@ -56,8 +90,22 @@ app.post('/success', (req, res, err) => {
     var city = req.body.city
     var list = process.env.SUCCESS_LIST
 
+    const queryString = "INSERT INTO success (name, email, city) VALUES (?, ?, ?)"
+
     console.log(name, email, city, list)
     saveToMailchimp(name, email, city, list)
+
+    pool.query(queryString, [name, email, city], (error, results, fields) => {
+        if (error) {
+            console.log('Failed to insert new user into mysql database' + error)
+            res.sendStatus(500)
+            return
+        }
+        console.log('Successfully inserted new user')
+        res.redirect('index.html')
+        res.end()
+    })
+
 })
 
 app.post('/all', (req, res, err) => {
@@ -66,8 +114,21 @@ app.post('/all', (req, res, err) => {
     var city = req.body.city
     var list = process.env.JAMES_ALLAN_ALL
 
+    const queryString = "INSERT INTO all_james_allan (name, email, city) VALUES (?, ?, ?)"
+
     console.log(name, email, city, list)
     saveToMailchimp(name, email, city, list)
+
+    pool.query(queryString, [name, email, city], (error, results, fields) => {
+        if (error) {
+            console.log('Failed to insert new user into mysql database' + error)
+            res.sendStatus(500)
+            return
+        }
+        console.log('Successfully inserted new user')
+        res.redirect('index.html')
+        res.end()
+    })
 })
 
 
