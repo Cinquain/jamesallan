@@ -3,7 +3,7 @@ const app = express()
 const morgan = require('morgan')
 const myql = require('mysql')
 const bodyParser = require('body-parser')
-const request = require('superagent')
+const request = require('request')
 
 
 app.use(bodyParser.urlencoded({extended: false}))
@@ -12,50 +12,59 @@ app.use(express.static('./public'))
 
 const Port = process.env.Port || 8000
 
+
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+
+const stripeTestKey = process.env.STRIPE_PUBLISH_TEST
+
+
 app.listen(8000, () => {
     console.log('Server is up and running on port 8000')
 })
+
+
 
 app.get('/', (req, res) => {
    res.render('index.html')
 })
 
-app.post('/health_subscriber', (req, res, err) => {
-    var name = req.body.name
+app.post('/health', (req, res, err) => {
+    var name = req.body.fullname
     var email = req.body.email
     var city = req.body.city
-    var list = ''
-
-    console.log(name, email, city, list)
-    saveToMailchimp(name, email, city, list)
-
-})
-
-app.post('/wealth_subscriber', (req, res, err) => {
-    var name = req.body.name
-    var email = req.body.email
-    var city = req.body.city
-    var list = ''
+    var list = process.env.HEALTH_LIST
 
     console.log(name, email, city, list)
     saveToMailchimp(name, email, city, list)
 })
 
-app.post('/success_subscriber', (req, res, err) => {
-    var name = req.body.name
+app.post('/wealth', (req, res, err) => {
+    var name = req.body.fullname
     var email = req.body.email
     var city = req.body.city
-    var list = ''
+    var list = process.env.WEALTH_LIST
 
     console.log(name, email, city, list)
     saveToMailchimp(name, email, city, list)
 })
 
-app.post('/all_subscriber', (req, res, err) => {
-    var name = req.body.name
+app.post('/success', (req, res, err) => {
+    var name = req.body.fullname
     var email = req.body.email
     var city = req.body.city
-    var list = ''
+    var list = process.env.SUCCESS_LIST
+
+    console.log(name, email, city, list)
+    saveToMailchimp(name, email, city, list)
+})
+
+app.post('/all', (req, res, err) => {
+    var name = req.body.fullname
+    var email = req.body.email
+    var city = req.body.city
+    var list = process.env.JAMES_ALLAN_ALL
 
     console.log(name, email, city, list)
     saveToMailchimp(name, email, city, list)
@@ -64,7 +73,11 @@ app.post('/all_subscriber', (req, res, err) => {
 
 
 function saveToMailchimp(name, email, city, list) {
-    var request = require('request')
+
+    var request = require('superagent')
+    const base = 'https://us18.api.mailchimp.com/3.0/lists/' 
+    const url = base.concat(list) + '/members'
+    console.log(url)
 
     const data = {
         members: [
@@ -73,22 +86,23 @@ function saveToMailchimp(name, email, city, list) {
                 status: 'subscribed',
                 merge_fields: {
                     FNAME: name,
-                    TEXTYUI_3: city
+                    MMERGE2: city
                 }
             }
         ]
     }
-
+   
     const postData = JSON.stringify(data)
 
     const options = { 
-        url: 'https://us7.api.mailchimp.com/3.0/lists/' + list,
+        url: url,
         method: 'POST',
         headers: { 
-            Authorization: 'auth 2d49af1f4e73a69ab208d07a27b5c768-us7'
+            Authorization: process.env.MAILCHIMP_KEY
         },
         body: postData 
         };
+
 
     request(options, function(error, response, body) {
         if (error) {
@@ -96,5 +110,5 @@ function saveToMailchimp(name, email, city, list) {
         } else if (response.statusCode === 200) {
             console.log('saved to mailchimp')
         }
-    })
+    });
 }
