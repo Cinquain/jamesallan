@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 
-*, *::before, *::after {
+*,*::before, *::after {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
@@ -14,7 +13,13 @@ body {
     margin: 24px;
 }
 
+.wall {
+    width: 100%;
+    margin-top: 20%;
+}
+
 .menu {
+    position: absolute;
     width: 100%;
     height: 10%;
     top: 0%;
@@ -27,6 +32,7 @@ body {
 .menu a img {
     width: 40px;
     height: auto;
+    margin-left: 10px;
 }
 
 .menu a img:hover {
@@ -45,60 +51,49 @@ body {
     font-weight: bold;
 }
 
-.title {
-    text-align: center;
-    font-family: 'Lato', sans-serif;
-    font-weight: bolder;
-}
-
-
-.title h1 {
-    margin: 20px 0;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.paragraph {
-    text-align: justify;
+.book {
+    width: 100%;
     margin: 0 auto;
-    font-size: 1em;
-    letter-spacing: 1px;
-    font-family: 'Lato', sans-serif;
-   
+    margin-top: 25%;
 }
 
-.image-box {
+.book img {
     width: 100%;
-    position: relative;
-    align-items: center;
-    display: flex;
 }
 
-.image-box img {
-    width: 50%;
-    height: auto;
-    margin-right: 20px;
+.details {
+  width: 100%;
+  text-align: center;
 }
 
-.image-box.full img {
-    width: 100%;
-    height: auto;
-    margin: 0% auto;
-}
-
-.image-box h3 {
+.details .title {
     font-size: 1.2em;
+    font-weight: 700;
 }
 
-#last {
-    cursor: pointer;
-}
-
-.line {
-    margin: 20px auto;
+.details .description {
     width: 80%;
+    text-align: justify;
+    margin: 3% auto;
+}
+
+.details .price {
+    font-weight: 700;
+    font-size: 1em;
+    margin-bottom: 5%;
+}
+
+.details button {
+    padding: 10px 20px;
+    border: 1px solid black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: white;
+}
+
+.details button:hover {
     background: black;
-    height: 1px;
+    color: white;
 }
 
 
@@ -126,28 +121,23 @@ body {
         transition: 0.25ms ease-out;
     }
 
-    .title h1 {
-        font-size: 2.5em;
-    }
-
-    .paragraph {
-        font-size: 1.3em;
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .image-box img {
-        margin-right: 5%;
-    }
-
-    .image-box h3 {
+    .details .title {
         font-size: 2em;
     }
-    
+
+    .details .description {
+        font-size: 1.2em;
+    }
+
+    .details .price {
+        font-size: 1.5em;
+        font-weight: 500;
+    }
 }
 
 
 @media (min-width: 1024px) {
+
 
     .menu a img {
         margin-left: 20px;
@@ -161,32 +151,42 @@ body {
         font-size: 25px;
     }
 
-    .title h1 {
-        margin: 50px 0;
-        font-size: 3.2em;
+    .details button {
+        font-size: 1em;
     }
 
-    .paragraph {
-        font-size: 1.9em;
+
+}
+
+@media (min-width: 1700px) {
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    
-    .paragraph {
+
+    .book {
         width: 50%;
-        margin: 0 auto;
+        margin-top: 10%;
     }
 
-    .image-box img {
-        margin-right: 7%;
+    .details {
+        width: 50%;
+        margin-top: 10%;
     }
 
-    .image-box h3 {
-        font-size: 2.3em;
+    .details .title {
+        font-size: 2.5em;
     }
-    
+
+    .details .description {
+        font-size: 2em;
+    }
+
+    .details button {
+        font-size: 1.2em;
+    }
 }
 
-@media (min-width: 1200px) {
-    .image-box h3 {
-        font-size: 2.8em;
-    }
-}
+

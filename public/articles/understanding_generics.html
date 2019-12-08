@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153619596-1"></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'UA-153619596-1');
+      </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Understanding Swift Generics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../assets/Yin Yang.png" type="image/x-icon">
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '320892225398142');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=320892225398142&ev=PageView&noscript=1"
+    /></noscript>
+        <!-- End Facebook Pixel Code -->
+</head>
+<body>
+
+        <div class="menu">
+            <a href="../index.html">
+                <img src="../assets/Yin Yang.png" alt="">
+            </a>
+    
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../about_me.html">
+                            About Me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../book.html">
+                            Book
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>  
+
+        <div class="title">
+                <h1>Understanding Swift Generics</h1>
+        </div>
+
+
+        <div class="paragraph">
+            <p>
+                    As with every high level concept in programming, it took some time for me to grasp generics. 
+                    Many developers consider it an advanced topic in iOS programming. Its practical use in application logic 
+                    however, urged me to write an article on the subject.
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    There are lots one can do with generics. The aim of this article is to provide a foundation so that you may start 
+                    using generics in your code when the situation requires it. We will illustrate its use through the scenario of a 
+                    customer shopping for items at a supermarket. Let’s begin by creating a customer object.
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/generics_1.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    The customer object we created has a name, a shopping cart, which is an Any array, a wallet, and a method 
+                    called pay. These properties and method pretty much defines all we need to be a functioning customer at a 
+                    supermarket. Next we will create a supermarket object where the customer can do some shopping.
+            </p>
+        </div>
+        <br>
+
+
+        <div class="image-box full">
+            <img src="./assets/generics_2.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    Aside from the supermarket having a name, the checkout method defined inside this object is where we will implement 
+                    the logic to checkout a customer. The final step in our setup is to create some items the customer can buy.
+            </p>
+        </div>
+        <br>
+
+
+        <div class="image-box full">
+            <img src="./assets/generics_3.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    Ok, let’s now begin implementing a solution to calculate our total when the customer is checking out. 
+                    Since each grocery item represents a different object, we can conform them to a protocol so that we may uniformly 
+                    apply a method to them. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/generics_4.png" alt="swift generics">
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                    We now have created a protocol called SuperMarketItem. This protocol defines a single method calls cost, 
+                    which returns a Float that stands for the price of the item. We then conform our grocery items to this 
+                    protocol. 
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    Let’s now change the shopping cart from an Any Object array to one that uses the protocol as a data type.
+                     Read part two of my protocol article if you are confused. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/generics_5.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    Ok, so we’re making progress. The final step now is to calculate the total of our customer’s 
+                    shopping cart using simple logic. An concise solution is provided below. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/generics_6.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                The solution used in this example is a reduce function that return the total price of the shopping 
+                cart array passed into the method. After creating a shopping cart array and initializing a customer 
+                and supermarket, our reduce technique is working just fine.
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                The question is however, why didn’t we use generics for our shopping cart array instead? 
+                Although protocol data types and generics are both abstractions, they have major differences. 
+                Let’s see what they are.   
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                Generics serve as placeholder abstractions. It is a way of saying, this array can be composed 
+                of any specific object that matches this generic profile. The generic is not a data type. 
+                Rather, it is a placeholder for any object that meets the profile of the generic. Let’s see what 
+                this means in code. We’ll start by changing the shopping cart from one that uses the protocol as a 
+                data type and replace it with a generic object T that conforms to the SuperMarketItem protocol. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/generics_7.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                We have converted our shopping cart to an array that uses a generic placeholder. Our array can 
+                hold any data type that meets the generic profile defined above. In this case, any object that conforms 
+                to the SuperMarketItem protocol. The exact data type of the array is not specified yet however, it is when we create the object that we specify what the actual data type is for that particular instance. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/generics_8.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                Since the apple object meets the generic profile due to the fact that it conforms to the SuperMarketItem 
+                protocol, it can be used as the actual data type when the object is formed. Unlike the protocol example 
+                however, I cannot store other objects outside of apple into the array. Look at what happens when the attempt 
+                is made.
+            </p>
+        </div>
+        <br>
+        
+        <div class="image-box full">
+            <img src="./assets/generics_9.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                Again, since I specified that Apple will be the data type in this particular instance through the syntax 
+                <Apple>, only apple objects can go inside the array. Despite the fact that both cherries and apple conform 
+                to the same protocol, they remain different data types nonetheless.  Generics serve as a placeholder for any 
+                specific type that meets its profile. It is not a data type in of itself.  
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                I could however declare another customer instance and place cherries as the data type when defining the generic
+                parameter. Since cherries match the generic profile, it will be accepted for the instance. But remember, only 
+                cherries can go into that array!
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/generics_10.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                That… in a nutshell, is the true essence of generics. They serve as placeholders when you are not sure 
+                what specific data type will be stored but have a clear idea of what the general profile of the object 
+                should look like. Wonderful instruments aren’t they? Now that we have the total, let’s not forget to pay ;) 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/generics_11.png" alt="swift generics">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                I hope you enjoyed my article on generics. Rather than providing you a traditional example where they are 
+                successfully utilized, I think demonstrating their limitation can be just as enlightening in understanding 
+                how to use them. If you did not grasp everything in this article please be patient, software engineering is
+                a marathon, not a race. Just keep at it and the dust will clear
+            </p>
+        </div>
+        <br>
+
+
+        <div class="image-box" id="last">
+                <img src="./assets/generics_12.jpg" alt="good_news">
+                <h3>
+                    Keep Coding! 
+                </h3>
+        </div>
+        <div class="line">
+    
+        </div>
+        <script type="text/javascript"> 
+            document.getElementById('last').addEventListener('click', function() {
+            window.location = '../subscribe.html'
+            })
+        </script>
+</body>
