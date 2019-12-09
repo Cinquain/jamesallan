@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(morgan('short'))
 app.use(express.static('./public'))
 
-const Port = process.env.Port || 8000
+const port = process.env.Port || 8000
 
 const pool = myql.createConnection( {
     host: 'us-cdbr-iron-east-05.cleardb.net',
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== 'production') {
 const stripeTestKey = process.env.STRIPE_PUBLISH_TEST
 
 
-app.listen(8000, () => {
+app.listen(port, () => {
     console.log('Server is up and running on port 8000')
 })
 
