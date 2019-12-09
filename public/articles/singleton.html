@@ -67,52 +67,22 @@
 
         <div class="paragraph">
             <p>
-                   
+                The singleton design pattern is a powerful concept. The controversy around this subject however leaves many 
+                new developers confused regarding their utility and nature. Similar to the storyboard vs no storyboard debate, 
+                singleton has its lovers and haters. Rather than focus on their pros and cons, this article simply aims at 
+                explaining what singletons are and why they are used.
             </p>
         </div>
         <br>
 
         <div class="paragraph">
             <p>
-                    
-            </p>
-        </div>
-        <br>
-
-
-        <div class="paragraph">
-            <p>
-                    
-            </p>
-        </div>
-        <br>
-
-
-        <div class="paragraph">
-            <p>
-                    
-            </p>
-        </div>
-        <br>
-
-        <div class="image-box">
-            <img src="./assets/higher_forms.jpg" alt="high_human_forms">
-            <h3>
-               Insert Description
-            </h3>
-        </div>
-        <br>
-
-        <div class="paragraph">
-            <p>
-                    
-            </p>
-        </div>
-        <br>
-
-        <div class="paragraph">
-            <p>
-                    
+                <h1>What are Singletons </h1>
+                <br>
+                A singleton is an object that’s only created once throughout the lifecycle of an app. 
+                This singleton instance is also a global object, meaning that it can be accessed from anywhere 
+                inside the app. These two characteristics are the defining elements of singletons, global access 
+                and singularity.
             </p>
         </div>
         <br>
@@ -120,16 +90,148 @@
 
         <div class="paragraph">
             <p>
-                    
+                <h1>Why are they used?</h1>
+                <br>
+                Singletons are used when you want to establish a single point of control over a shared resource. 
+                This shared resource may be a service class that performs all your network operations, a payment object 
+                that does all your transactions, or a logger that tracks your server like Morgan. The point to emphasize 
+                however is that by making this shared resource a singleton, you now have a single point of control over this 
+                resource. 
+                
+            </p>
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                To illustrate an example where singletons may be of service, I created a simple project that demonstrates its utility.
+                We begin by setting up a simple server using node.js.
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/singleton_1.png" alt="high_human_forms">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                This server is a restful API that serves json data at the /products, /users, and /orders endpoints. Now that our 
+                server is up and running, let’s create an iOS app with view controllers that use data from these routes. 
+                These view controllers are named after their respective endpoint.
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/singleton_2.jpg" alt="high_human_forms">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                Each view controller presents different information and therefore fetches data from varying endpoints.
+                When we take a look at how these view controllers perform their network request, we find the following:
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/singleton_3.jpg" alt="high_human_forms">
+        </div>
+        <br>
+
+        
+        <div class="paragraph">
+            <p>
+                When observed side by side, the network code from the two view controllers contain a lot of redundancy. 
+                Each view controller is performing very similar network calls. The only thing that varies is their endpoints 
+                and the type of data they return.. 
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                There are a few shortcomings with this approach. First, there is a lot of redundant code. 
+                Second, the common variables that the network request depends on can quickly become out of synch 
+                because they are being implemented on separate view controllers. Lastly, a view controller shouldn’t 
+                really be making network calls, its job is to manage views. 
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                Let’s clean this up by creating a singleton to centralize the common variables and network 
+                object into one location. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/singleton_4.png" alt="high_human_forms">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                 The code above shows the creation of a service class (APIService) whose role it is to perform all of our network
+                 operations. Naming is extremely important in programming. The static property called shared is what captures our 
+                 singleton object. Its name “shared” is not an accident. It indicates that this is a shared resource that will be 
+                 used by across multiple objects. In our case, these objects will be the three view controllers.
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/singleton_5.png" alt="high_human_forms">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                The UserViewController is now much lighter than before. Instead of performing a ton of network operations 
+                in its body, it simply calls the APIService singleton to fetch the json data from the users endpoint it passed
+                 to it. Once the data is obtained, the UserViewController utilizes the data in the unique way it desires. Other 
+                 view controllers can adopt a similar pattern such as ProductsViewController below. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/singleton_6.png" alt="high_human_forms">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                Through the use of singleton, our viewcontrollers are now less bloated. There is less redundant code throughout
+                 the app and common variables are now in a central location, allowing for changes to remain synchronized. Since
+                  this singleton is shared by all three view controllers, it gives us a single point of control for all our network 
+                  operations. And that is the essence of singletons, establish a single point of control over a shared resource. 
+            </p>
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+               <h1>Potential Drawbacks</h1>    
+               There is no such thing as something for nothing, singletons do come at a price. Singletons tend to disguise dependencies 
+               by rendering them obscure. They can become problematic if they are mutable and susceptible to state changes. Lastly, 
+               although they use lazy loading, singletons can create memory leaks because they are never de-allocated once initialized. It is important therefore that you use singletons wisely and not abuse their power. Worry not however, you will find your balance as your coding experience grows
             </p>
         </div>
         <br>
     
 
         <div class="image-box" id="last">
-                <img src="./assets/goodbye.jpg" alt="good_news">
+                <img src="./assets/singleton_7.jpg" alt="good_news">
                 <h3>
-                    Insert Endlife
+                    Keep Coding! 
                 </h3>
         </div>
         <div class="line">

@@ -67,69 +67,129 @@
 
         <div class="paragraph">
             <p>
-                   
+                We all know that a class or struct can have functions and variables inside them. The functions inside 
+                these objects are called methods, while their variables are called properties. To access the method or 
+                property of a class or struct, you first need an instance created. 
             </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/type_properties_ 1.png" alt="swift type properties">
         </div>
         <br>
 
         <div class="paragraph">
             <p>
-                    
+                There are cases however, where we want to access a property or method without the need for creating an 
+                instance. Such property or method would not belong to a particular instance, but to the class or struct
+                 itself. These elements are called type method or type property. They are prefixed with type because they 
+                 belong to the data type itself, not a particular instance. To create a type method or property, use the 
+                 static or class keyword in front of the variable or function you want to belong the data type. 
             </p>
         </div>
         <br>
 
 
-        <div class="paragraph">
-            <p>
-                    
-            </p>
-        </div>
-        <br>
-
-
-        <div class="paragraph">
-            <p>
-                    
-            </p>
-        </div>
-        <br>
-
-        <div class="image-box">
-            <img src="./assets/higher_forms.jpg" alt="high_human_forms">
-            <h3>
-               Insert Description
-            </h3>
-        </div>
-        <br>
-
-        <div class="paragraph">
-            <p>
-                    
-            </p>
-        </div>
-        <br>
-
-        <div class="paragraph">
-            <p>
-                    
-            </p>
+        <div class="image-box full">
+            <img src="./assets/type_properties_2.png" alt="swift type properties">
         </div>
         <br>
 
 
         <div class="paragraph">
             <p>
-                    
+                The code example above uses the static keyword to create its type properties. Using the <b>static</b>keyword 
+                means that the type method or property is not inheritable when the data type is subclassed. Therefore 
+                both structs and classes can use the <b>static</b> keyword. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/type_properties_3.png" alt="swift type properties">
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                If you use the class keyword such as in the case above, it means that the type method or property can be 
+                inherited when the data type is subclasses. Using the class keyword also means the type method can be 
+                overridden. Since structs do not have inheritance ability, only classes can use this keyword as shown in 
+                the compiler error. 
+            </p>
+        </div>
+        <br>
+
+
+        <div class="image-box full">
+            <img src="./assets/type_properties_4.png" alt="swift type properties">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                The last thing I want to mention is that type properties and methods are lazy by default. That is 
+                because they are global variables. In Swift, all global variables are implemented using lazy loading 
+                without needing to write the lazy keyword. This is an important point and is often overlooked by developers.
+                It implies two things. First, that the initial value is not calculated until the type property is called. 
+                Second, that the type property can only be called once. To illustrate this point, I will create a code example
+                using a random generator. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/type_properties_5.png" alt="swift type properties">
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                The example above demonstrate a generator function which returns a random number when it’s called. 
+                The function is called twice after being created. Each time it is a called, the function returns a
+                different random number as expected.   
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/type_properties_6.png" alt="swift type properties">
+        </div>
+        <br>
+
+
+
+        <div class="paragraph">
+            <p>
+                In this example, we store an identical generator function inside a type property. However, calling
+                 the function on multiple occasions gives us the same result. That is because global variables are 
+                 implemented using lazy loading, and lazy loading implies that the property can only be called once. 
+                 The generator function was called during the first execution. After the first call, the lazy property 
+                 simply stores the previously returned value.
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                In a nutshell, type methods or properties are elements that belong to the data type, not a particular instance.
+                 Hence why they have type as part of their name. Because they are global variables, Swift implements them using
+                lazy loading despite the absence of the lazy keyword. Lazy loading means the initial value is not computed until 
+                the property is called, and that it can only be called once. This summary gives you a solid footing on type 
+                properties/methods and set you up to understand the singleton design pattern. Til next time!
             </p>
         </div>
         <br>
     
+    
 
         <div class="image-box" id="last">
-                <img src="./assets/goodbye.jpg" alt="good_news">
+                <img src="./assets/type_properties_6.jpg" alt="good_news">
                 <h3>
-                    Insert Endlife
+                    Keep Coding! 
                 </h3>
         </div>
         <div class="line">
