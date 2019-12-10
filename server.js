@@ -132,6 +132,11 @@ app.post('/all', (req, res, err) => {
 })
 
 
+app.post('/purchase', (req, res) => {
+    console.log('Making a purchase')
+})
+
+
 
 function saveToMailchimp(name, email, city, list) {
 
