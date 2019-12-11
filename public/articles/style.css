@@ -67,6 +67,14 @@ body {
    
 }
 
+.paragraph a {
+    text-decoration: none;
+}
+
+.paragraph h3 {
+    text-align: center;
+}
+
 .image-box {
     width: 100%;
     position: relative;
@@ -100,6 +108,7 @@ body {
     background: black;
     height: 1px;
 }
+
 
 
 @media (min-width: 768px) {
