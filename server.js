@@ -7,6 +7,7 @@ const request = require('request')
 
 
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 app.use(morgan('short'))
 app.use(express.static('./public'))
 

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153619596-1"></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'UA-153619596-1');
+      </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What are Closures</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../assets/Yin Yang.png" type="image/x-icon">
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '320892225398142');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=320892225398142&ev=PageView&noscript=1"
+    /></noscript>
+        <!-- End Facebook Pixel Code -->
+</head>
+<body>
+
+        <div class="menu">
+            <a href="../index.html">
+                <img src="../assets/Yin Yang.png" alt="">
+            </a>
+    
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../about_me.html">
+                            About Me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../book.html">
+                            Book
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>  
+
+        <div class="title">
+                <h1>What are Closures </h1>
+        </div>
+
+
+        <div class="paragraph">
+            <p>
+                   
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    Nothing freaked me out more than closures when I started my iOS career. Their syntax looked weird and 
+                    utilizing them felt odd. Asking senior engineers about closures didn’t help neither. They usually gave 
+                    me a verbose explanation full of abstractions. This article will explain what closures are clearly and 
+                    succinctly. 
+            </p>
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                    <b>Closures are anonymous functions.</b> This means they have no name and don’t require a func keyword in their 
+                    syntax. This next point is important. Because they have no name, you cannot write a closure by itself like
+                     you do for a function. You must either store the closure in a variable or set it as a type.
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/closures_1.png" alt="closure_syntax">
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                    The first line of code demonstrate a variable that stores a closure. The second line of code shows a 
+                    variable that has a closure as its type. Likewise, you can create a function that has a parameter who 
+                    takes in a closure as its value. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/closures_2.png" alt="closure_syntax">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    The code above contains a function with two parameters. The first parameter takes in an integer,
+                     while the second parameters takes in a closure.
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    The syntax of a closure can be described as follows: (parameters) -> (return type). The empty parentheses 
+                    you have seen in the previous example above simply means the closure takes in no parameters and returns 
+                    nothing. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/closures_3.png" alt="closure_syntax">
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                    The code above is the same function but with changes in the signature of the closure. A signature defines
+                    the input and output of a closure. Previously, the closure had a signature of no parameters, and returning 
+                    nothing. We have changed the signature so that it takes in an integer and returns a boolean
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    The start of a closure’s body is introduced by the in keyword. This keyword indicates that the definition
+                     of the closure’s parameters and return type has finished, and the body of the closure is about to begin. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/closures_5.png" alt="closure_syntax">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    If you remember, closures are anonymous functions so they must be stored into variables. In the example 
+                    above, we create a variable called divisibleByFive which stores a closure. The signature of the closure 
+                    defines that it takes in an integer and returns a boolean. 
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    Once the parameters and return type is finished, the in marks the start of the closure body, this is where you
+                     write the code you want implemented. In our case, the body returns true if the number passed into 
+                     it is divisible by 5. 
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                    Lastly, when a closure matches the signature of a function parameter, it can be passed into the parameter 
+                    of that function.
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/closures_6.png" alt="closure_syntax">
+        </div>
+        <br>
+    
+        
+        <div class="paragraph">
+            <p>
+                    The divisibleByFive variable takes in a number and returns a boolean. Likewise the logic parameter
+                     of that function also takes in an integer and returns a boolean. This means that their signatures 
+                     match. This allows us to pass divisiblebyFive as the logic parameter for the compareNumbers function. 
+                     Since the closure is a function itself (an anonymous one), this case is an example of a nested function, 
+                     which means a function inside a function. 
+            </p>
+        </div>
+        <br>
+    
+        <div class="paragraph">
+            <p>
+                    There you have it, thats closures in a nutshell. They are anonymous functions you can store into variables
+                     or pass into functions. There are more advance details you’ll need to know of course, such as the fact that
+                      closures are reference types. But for now, you have a good basis. Becoming a software engineer is a journey
+                       so take it one step at a time. 
+            </p>
+        </div>
+        <br>
+                    
+        
+    
+
+        <div class="image-box" id="last">
+                <img src="./assets/closures_7.jpg" alt="code">
+                <h3>
+                   Keep Coding! 
+                </h3>
+        </div>
+        <div class="line">
+    
+        </div>
+        <script type="text/javascript"> 
+            document.getElementById('last').addEventListener('click', function() {
+            window.location = '../book.html'
+            })
+        </script>
+</body>
