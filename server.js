@@ -24,7 +24,8 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
-const stripeTestKey = process.env.STRIPE_PUBLISH_TEST
+const stripeTestKey = process.env.STRIPE_SECRET_TEST
+const stripe = require('stripe')(stripeTestKey);
 
 
 app.listen(PORT, () => {
@@ -129,14 +130,24 @@ app.post('/all', (req, res, err) => {
         res.redirect('index.html')
         res.end()
     })
-})
+});
 
 
 app.post('/purchase', (req, res) => {
-    console.log('Making a purchase')
-})
-
-
+    const amount = 650
+    
+    stripe.customers.create({
+        email: req.body.stripeEmail,
+        source: req.body.stripeToken
+    })
+    .then(customer => stripe.charges.create({
+        amount: amount, 
+        description: 'Become More Intelligent Ebook',
+        currency: 'usd',
+        customer: customer.id 
+    }))
+    .then(charge => res.redirect('success.html'));
+});
 
 function saveToMailchimp(name, email, city, list) {
 
@@ -164,7 +175,7 @@ function saveToMailchimp(name, email, city, list) {
         url: url,
         method: 'POST',
         headers: { 
-            Authorization: process.env.MAILCHIMP_KEY
+            Authorization: process.env.CX_Key
         },
         body: postData 
         };
