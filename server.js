@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const myql = require('mysql')
 const bodyParser = require('body-parser')
 const request = require('request')
+const path = require('path')
 
 
 app.use(bodyParser.urlencoded({extended: false}))
@@ -61,6 +62,13 @@ app.post('/health', (req, res, err) => {
     })
 
 })
+
+app.get('/download', (req, res) => {
+    res.download(path.join(__dirname, 'public/assets/Become_More_Intelligent.pdf'), (err) => {
+        console.log(err)
+    });
+    console.log('Ebook has been downloaded')
+});
 
 app.post('/wealth', (req, res, err) => {
     var name = req.body.fullname
