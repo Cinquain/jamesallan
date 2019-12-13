@@ -7,6 +7,7 @@ const request = require('request')
 const path = require('path')
 
 
+
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(morgan('short'))
@@ -26,8 +27,8 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
-const stripeTestKey = process.env.STRIPE_SECRET_TEST
-const stripe = require('stripe')(stripeTestKey);
+const stripeLiveKey = process.env.STRIPE_LIVE_KEY
+const stripe = require('stripe')(stripeLiveKey);
 
 
 app.listen(PORT, () => {
