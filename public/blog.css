@@ -98,6 +98,30 @@ p {
     box-sizing: border-box;
 }
 
+.controls {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.control {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    background: black;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.control.next {
+    float: right;
+}
+
+.control.prev {
+    float: left;
+}
+
 
 @media (max-width: 640px) {
 
@@ -165,6 +189,10 @@ p {
     .wall-item h2 {
         font-size: 1.8em;
     }
+
+    .control {
+    padding: 15px 30px;
+    }
 }
 
 @media (min-width: 1400px) {
@@ -174,5 +202,9 @@ p {
 
     .wall-item h2 {
         font-size: 2em;
+    }
+
+    .control {
+        padding: 20px 40px;
     }
 }
