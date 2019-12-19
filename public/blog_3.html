@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153619596-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'UA-153619596-1');
+        </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:image" content="../assets/blog assets/my_thoughts.jpg"/>
+    <title>My Thoughts</title>
+    <link rel="stylesheet" href="blog.css">
+    <link rel="shortcut icon" href="/assets/Yin Yang.png" type="image/x-icon">
+
+     <!-- Facebook Pixel Code -->
+     <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '320892225398142');
+            fbq('track', 'PageView');
+          </script>
+          <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=320892225398142&ev=PageView&noscript=1"
+          /></noscript>
+          <!-- End Facebook Pixel Code -->
+</head>
+<body>
+    
+
+        <div class="menu">
+            <a href="index.html">
+                <img src="/assets/Yin Yang.png" alt="Yin Yang">
+            </a>
+    
+            <nav>
+                <ul>
+                    <li>
+                        <a href="about_me.html">
+                            About Me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="book.html">
+                            Book
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>  
+
+        <div class="wall">
+
+            <div class="wall-item">
+                <a href="/articles/how_to_buy_gold.html">
+                    <img src="/assets/blog assets/gold_investing.jpg" alt="">
+                </a>
+                <h2>How to Buy Gold</h2>
+                <p>April 21th, 2018</p>
+            </div>
+
+
+        </div>
+    
+
+        
+        <div class="controls">
+            <a href="blog2.html" class="control prev"> Prev </a>
+            <a href="#" class="control next"> Next </a>
+        </div>
+
+        <div class="clear"></div>
+
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+      
+        <script src="jaliswall.js"></script>
+        <script type="text/javascript">
+            $('.wall').jaliswall();
+
+            $('.wall').jaliswall({
+                item : '.wall-item',
+                columnClass : '.wall-column'
+            });
+        </script>
+
+        
+</body>
+</html>
