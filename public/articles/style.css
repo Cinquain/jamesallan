@@ -71,7 +71,13 @@ body {
     text-decoration: none;
 }
 
+
+
 .paragraph h3 {
+    text-align: center;
+}
+
+.paragraph.title  {
     text-align: center;
 }
 
