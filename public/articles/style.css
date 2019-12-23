@@ -117,6 +117,21 @@ body {
     height: 1px;
 }
 
+button {
+    background: white;
+    padding: 10px 20px;
+    border: 1px solid black;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    position: absolute;
+    cursor: pointer;
+}
+
+button:hover {
+    background: black;
+    color: white;
+}
+
 
 
 @media (min-width: 768px) {
