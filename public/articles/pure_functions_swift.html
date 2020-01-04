@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153619596-1"></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'UA-153619596-1');
+      </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="../assets/blog assets/pure_functions_thumb"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pure Functions in Swift</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../assets/Yin Yang.png" type="image/x-icon">
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '320892225398142');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=320892225398142&ev=PageView&noscript=1"
+    /></noscript>
+        <!-- End Facebook Pixel Code -->
+</head>
+<body>
+
+        <div class="menu">
+            <a href="../index.html">
+                <img src="../assets/Yin Yang.png" alt="">
+            </a>
+    
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../about_me.html">
+                            About Me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../book.html">
+                            Book
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>  
+
+        <div class="title">
+                <h1>Pure Functions in Swift</h1>
+        </div>
+
+
+        <div class="paragraph">
+            <p>
+                Pure functions make up the core of the functional programming paradigm. They are functions that <b>always</b> return a specific output when given a particularly input. 
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                Since contrast is a powerful aid for obtaining clarity, we will start by taking a look at impure an function then use that as a base to cross over to a pure function.  
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                Below we have a function called fetchdata which accepts an input, a url endpoint. The function uses this input to fetch us data from the web, create objects using the JSON data received, then appends this data to an array of users we have created above. This pattern should be familiar to most developers. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/impure_function.png" alt="impure_function">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                The fetchData function above is not pure because it is modifying something outside of its scope. In our case, our function is modifying the users array above it. This brings us to the first rule in functional programming- pure functions cannot modify anything outside of their inner scope. A good way to fix this issue would be to instead of modifying an already existing array, the function can return its own array.
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/still_impure.png" alt="impure_functions">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                Now you may think this is a pure function because it reliably returns an array of users but mistake not- it still isn't. That is because the array it returns is subject to change in the future. If ten more users join the platform whose endpoint we request data from, the function will now return an array of 13 users rather than the 3 it previously returned.
+            </p>
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                Let's make a call the fetchData function and print out the data it returns inside the console. Here is the set of data we get printed to the console on our first call.
+            </p>
+        </div>
+        <br>
+
+
+        <div class="image-box full">
+            <img src="./assets/array_1.png" alt="xcode_console">
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                Ok, so far everything looks good. But let's make a second call to fetchData using the same input, the /users url endpoint, and see what happens.
+            </p>
+        </div>
+        <br>
+
+
+        <div class="image-box full">
+            <img src="./assets/array_2.png" alt="console.log">
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                Notice that when the function was called two minutes later, different objects were returned. Remember, pure functions cannot return different outputs for the same input. When we give a pure function the same input, it must return the same exact output independent through time. In other words, <b>pure functions must be exactly deterministic </b>. Writing a pure function is rather simple. They take an input and returns an output without modifying anything outside of their scope.
+                Below is a practical example of a pure function.
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/red_button.png" alt="create_button_swift">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                This function returns a button based on the input of color you give it. If you pass it a red color, you will always be returned a red button. It will never return you a black button when you give it an input of red. This functions is also not modifying any button outside of its scope. It returns you a brand new button each and every time it is called. This function is therefore pure! 
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                To prove the reliability of this pure function just created. Let's call it repeatedly and see if it returns the same thing. We can achieve this of course by using a loop. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/button_loop.png" alt="swift_for_loop">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                This loop calls our pure function iteratively over the Y and X axis of our view. Since pure functions are deterministic, the result of this should be identical buttons laid out over different positions of the view. You can see the results below. 
+            </p>
+        </div>
+        <br>
+
+        <div class="image-box full">
+            <img src="./assets/magical_grid.png" alt="swift_for_loop">
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                As you can tell by the image above, we have a grid of identical buttons as a result of calling our pure functions iteratively. This elegant grid was achieved without writing much code and with minimal side effect.
+            </p>
+        </div>
+        <br>
+
+        <div class="paragraph">
+            <p>
+                So what’s the benefit of using pure functions? Well for one, because pure functions do not have side effects, they make your code more loosely coupled and therefore more robust. Pure functions also make your code easy to test. You can test assertions for pure functions without much setup work. Lastly, pure functions also make your more reusable. In summary, pure functions allow for more loosely coupled, easy to test, reusable code. Use them as much as you can.
+            </p>
+        </div>
+        <br>
+
+
+        <div class="paragraph">
+            <p>
+                If you found this article useful, please support me and invest in yourself by getting my book <a href="../book.html">Becoming More Intelligent</a>. In it, I discuss methods to build what I call a <b>'Custom Mind'</b>. A custom mind is a brain that has the instincts you consciously chose, and has eliminated former instincts you did not like. There is no better investment than building a custom mind. 
+            </p>
+        </div>
+        <br>
+    
+
+        <div class="image-box" id="last">
+                <img src="./assets/code_thumbnail.jpg" alt="keep_coding">
+                <h3>
+                    Keep Coding! 
+                </h3>
+        </div>
+        <div class="line">
+    
+        </div>
+        <script type="text/javascript"> 
+            document.getElementById('last').addEventListener('click', function() {
+            window.location = '../book.html'
+            })
+        </script>
+</body>

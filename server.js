@@ -64,6 +64,24 @@ app.post('/health', (req, res, err) => {
 
 })
 
+app.get('/users', (req, res) => {
+
+   let users = [
+    {firstName: "Olguine", age: "25"},
+    {firstName: "Thomas", age: "67"},
+    {firstName: "Mom", age: "58"},
+    {firstName: "Johanne", age: "36"},
+    {firstName: "Ian", age: "38"},
+    {firstName: "Carolyn", age: "35"},
+    {firstName: "Sunil", age: "27"},
+    {firstName: "James", age: 32},
+    {firstName: "Kylie", age: 18},
+    {firstName: "William", age: 28}
+   ]
+
+    res.json(users)
+})
+
 app.get('/download', (req, res) => {
     res.download(path.join(__dirname, 'public/assets/Become_More_Intelligent.pdf'), (err) => {
         console.log(err)
