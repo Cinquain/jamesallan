@@ -110,8 +110,8 @@ app.post('/wealth', (req, res, err) => {
         res.redirect('index.html')
         res.end()
     })
-
 })
+
 
 app.post('/success', (req, res, err) => {
     var name = req.body.fullname
