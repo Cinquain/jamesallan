@@ -41,7 +41,7 @@ router.post('/purchase', (req, res) => {
         currency: 'usd',
         customer: customer.id 
     }))
-    .then(charge => res.redirect('success.html'));
+    .then(charge => res.redirect('https://www.jamesallan.net/success.html'));
 });
 
 router.get('/download', (req, res) => {
@@ -132,7 +132,7 @@ function saveToMailchimp(name, email, city, list, res) {
     request(options, function(error, response, body) {
         if (error) throw new Error(error);
         console.log(body)
-        res.redirect('index.html');
+        res.redirect('https://www.jamesallan.net');
         
     });
 }
