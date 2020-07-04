@@ -45,10 +45,7 @@ router.post('/purchase', (req, res) => {
 });
 
 router.get('/download', (req, res) => {
-    res.download(path.join(__dirname, '../assets/Become_More_Intelligent.pdf'), (err) => {
-        console.log(err)
-    });
-    console.log('Ebook has been downloaded')
+    res.redirect('https://www.jamesallan.net/assets/Become_More_Intelligent.pdf');
 });
 
 
@@ -102,7 +99,7 @@ router.post('/all', (req, res, err) => {
 
 function saveToMailchimp(name, email, city, list, res) {
 
-    var request = require('superagent')
+    var request = require('request')
     const base = 'https://us18.api.mailchimp.com/3.0/lists/' 
     const url = base.concat(list) + '/members'
     console.log(url)
