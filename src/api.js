@@ -45,7 +45,7 @@ router.post('/purchase', (req, res) => {
 });
 
 router.get('/download', (req, res) => {
-    res.download(path.join(__dirname, 'public/assets/Become_More_Intelligent.pdf'), (err) => {
+    res.download(path.join(__dirname, '../assets/Become_More_Intelligent.pdf'), (err) => {
         console.log(err)
     });
     console.log('Ebook has been downloaded')
@@ -133,12 +133,9 @@ function saveToMailchimp(name, email, city, list, res) {
 
 
     request(options, function(error, response, body) {
-        if (error) {
-            console.log('Error saving to mailchimp')
-        } else if (response.statusCode === 200) {
-            console.log('saved to mailchimp')
-            res.redirect('index.html')
-            res.end()
+        if (error) throw new Error(error);
+        console.log(body)
+        res.redirect('index.html')
         }
     });
 }
