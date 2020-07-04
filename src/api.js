@@ -104,39 +104,66 @@ function saveToMailchimp(name, email, city, list, res) {
     const url = base.concat(list) + '/members'
     console.log(url)
 
-    const data = {
-        members: [
-            {
-                email_address: email, 
-                status: 'subscribed',
-                merge_fields: {
-                    FNAME: name,
-                    MMERGE2: city
-                }
-            }
-        ]
-    }
-   
-    const postData = JSON.stringify(data)
 
-    const options = { 
-        url: url,
-        method: 'POST',
-        headers: { 
-            Authorization: process.env.MAILCHIMP_KEY
-        },
-        body: postData 
-        };
+    var options = { method: 'POST',
+    url: url,
+    headers:
+    { 'cache-control': 'no-cache',
+        Connection: 'keep-alive',
+        Host: 'us18.api.mailchimp.com',
+        'Cache-Control': 'no-cache',
+        Accept: '*/*',
+        Authorization: process.env.MAILCHIMP_KEY,
+        'Content-Type': 'application/json' },
+    body:
+    { 'email_address': email,
+        'status': 'subscribed',
+        merge_fields:
+        { 
+            FNAME: name,
+            MMERGE2: city
+        } },
+    json: true };
 
-
-    request(options, function(error, response, body) {
-        if (error) throw new Error(error);
-        console.log(body)
-        res.redirect('https://www.jamesallan.net');
-        
+    request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+    console.log(body);
+    res.redirect('https://www.jamesallan.net')
     });
-}
 
+    // const data = {
+    //     members: [
+    //         {
+    //             email_address: email, 
+    //             status: 'subscribed',
+    //             merge_fields: {
+    //                 FNAME: name,
+    //                 MMERGE2: city
+    //             }
+    //         }
+    //     ]
+    // }
+   
+    // const postData = JSON.stringify(data)
+
+    // const options = { 
+    //     url: url,
+    //     method: 'POST',
+    //     headers: { 
+    //         Authorization: process.env.MAILCHIMP_KEY
+    //     },
+    //     body: postData 
+    //     };
+
+
+    // request(options, function(error, response, body) {
+    //     if (error) throw new Error(error);
+    //     console.log(body)
+    //     res.redirect('https://www.jamesallan.net');
+        
+    // });
+
+}
 
 
 app.use('/.netlify/functions/api', router);
