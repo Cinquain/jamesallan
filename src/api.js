@@ -135,8 +135,8 @@ function saveToMailchimp(name, email, city, list, res) {
     request(options, function(error, response, body) {
         if (error) throw new Error(error);
         console.log(body)
-        res.redirect('index.html')
-        }
+        res.redirect('index.html');
+        
     });
 }
 
