@@ -48,7 +48,8 @@ body {
 .title {
     text-align: center;
     font-family: 'Lato', sans-serif;
-    font-weight: bolder;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 
