@@ -89,6 +89,12 @@ body {
     display: flex;
 }
 
+.image-box.full {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .image-box img {
     width: 50%;
     height: auto;
@@ -131,6 +137,13 @@ button {
 button:hover {
     background: black;
     color: white;
+}
+
+#paypal {
+    width: 500px;
+    height: auto;
+    left: 50%;
+    position: relative;
 }
 
 
